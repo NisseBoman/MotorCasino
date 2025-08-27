@@ -1,0 +1,35 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = ["your-email@example.com"]
+description = "MotorCasino S3 Edge Compute App"
+language = "javascript"
+manifest_version = 3
+name = "motorcasino-s3-app"
+
+[scripts]
+build = "npm run build"
+post_init = "npm install"
+
+[local_server]
+  [local_server.backends]
+    [local_server.backends.s3_backend]
+      url = "https://your-bucket-name.s3.amazonaws.com"
+      host_header = "your-bucket-name.s3.amazonaws.com"
+
+[env.production]
+  [env.production.backends]
+    [env.production.backends.s3_backend]
+      url = "https://your-bucket-name.s3.amazonaws.com"
+      host_header = "your-bucket-name.s3.amazonaws.com"
+
+  [env.production.logging]
+    [env.production.logging.bigquery_logs]
+      type = "bigquery"
+      project_id = "your-google-project-id"
+      dataset = "fastly_logs"
+      table = "request_logs"
+      user = "your-service-account@your-project.iam.gserviceaccount.com"
+      secret_key = "your-private-key-secret"
+      format = "json"
+      format_version = 2

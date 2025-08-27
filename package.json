@@ -1,0 +1,19 @@
+{
+  "name": "motorcasino-edge-app",
+  "version": "1.0.0",
+  "description": "Fastly Edge Compute app with AWS S3 backend and caching",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:compute",
+    "build:compute": "js-compute-runtime --enable-aot src/index.js bin/main.wasm",
+    "dev": "npm run preview",
+    "deploy": "npm run build && fastly compute deploy",
+    "preview": "fastly compute serve"
+  },
+  "dependencies": {
+    "@fastly/js-compute": "^3.0.0"
+  },
+  "devDependencies": {
+    "@fastly/cli": "^3.0.0"
+  }
+}
