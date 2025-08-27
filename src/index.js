@@ -1,3 +1,6 @@
+// Created by Nils Boman (nboman@fastly.com) but without any support on the code. 
+// Changes are free to be made without feedback or anything. 
+
 import { CacheOverride } from "fastly:cache-override";
 import { Logger } from "fastly:logger";
 
